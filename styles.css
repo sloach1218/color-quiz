@@ -1,0 +1,38 @@
+*{box-sizing: border-box; }
+body{
+    text-align: center;
+}
+body > section{
+    padding:20px;
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+}
+ul{padding:0;}
+ul li{
+    list-style: none;
+    border: 1px solid #ddd;
+    padding: 10px 0;
+    margin: 10px auto;
+}
+button{
+    width:200px;
+    padding: 10px 8px;
+}
+.correct{
+    border:2px solid green;
+}
+.wrong{
+    border:2px solid red;
+}
+footer p{
+    display: inline;
+    
+}
+footer p:first-of-type{
+    color: green;
+    display: block;
+}
+#wrongA footer p:first-of-type{
+    color: red;
+}

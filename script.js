@@ -1,6 +1,6 @@
 //variabls to store quiz score and question nmber
 let score = 0;
-let questionNumber = 0;
+let questionNumber = 1;
 
 //begin quiz when user clicks start
 function start (){
@@ -20,7 +20,7 @@ function start (){
 //generate quiz question
 function generateQuestion(){
     //use current questionNumber to find values in STORE
-    let question = STORE[questionNumber].question;
+    let question = STORE[questionNumber - 1].question;
     let userOptions = createUserOptions();
     
     //generate html and insert values of question
@@ -33,7 +33,7 @@ function generateQuestion(){
 
 //create userOptions
 function createUserOptions(){
-    let options = STORE[questionNumber].possibleAnswers;
+    let options = STORE[questionNumber - 1].possibleAnswers;
     let possibleOptions = '';
     for(let i = 0; i < options.length; i++){
         possibleOptions = `<label for="option${i+1}"><input type="radio" name="options" id="option${i+1}" value="${options[i]}" tabindex="${i+1}">
@@ -51,7 +51,7 @@ function submitAnswer(){
         event.preventDefault();
         let selected = $('input:checked');
         let userAnswer = selected.val();
-        let correctUserAnswer = STORE[questionNumber].correctAnswer;
+        let correctUserAnswer = STORE[questionNumber - 1].correctAnswer;
         if (userAnswer === correctUserAnswer){
             rightAnswer();
         } else {
@@ -71,7 +71,7 @@ function rightAnswer(){
 }
 //if wrong answer
 function wrongAnswer(){
-    let correctUserAnswer = STORE[questionNumber].correctAnswer;
+    let correctUserAnswer = STORE[questionNumber - 1].correctAnswer;
     $('#submit').hide();
     $('form').after(
         `<p class="feedback">Sorry! That is incorrect!</p>

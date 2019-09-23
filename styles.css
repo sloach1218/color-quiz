@@ -35,7 +35,7 @@ h1{
     padding: 10px 16px;
     border: none;
     background-color: rgba(255, 255, 255, .7);
-    font-size: 14px;
+    font-size: 16px;
 }
 .questionWrap p{
     font-size: 22px;
@@ -67,18 +67,20 @@ p.questionTracker{float:left;}
     border: none;
     background-color: rgba(255, 255, 255, .7);
     width: 100%;
-    font-size:14px;
+    font-size:16px;
 }
 
 header p, p.questionTracker, p.scoreTracker, #submit{display:none;}
-
+p.feedback{
+    font-size: 14px;
+}
 .nxtbtn{
     display: block;
     padding: 10px 30px;
     border: none;
     background-color: rgba(255, 255, 255, .7);
     width: 100%;
-    font-size:14px;
+    font-size:16px;
 }
 
 .correct{

@@ -12,10 +12,9 @@ function start (){
         $('p.scoreTracker').show();
         $('#submit').show();
         $('.qNumber').text(questionNumber);
-
+        
     })
 }
-
 
 //generate quiz question
 function generateQuestion(){
@@ -75,20 +74,16 @@ function wrongAnswer(){
     $('#submit').hide();
     $('form').after(
         `<p class="feedback">Sorry! That is incorrect!</p>
-        <p  class="feedback">The correct answer is: ${correctUserAnswer}</p>
+        <p  class="feedback">The correct answer is:<br>${correctUserAnswer}</p>
         <button type="button" class="nxtbtn">Next</button>`
     );
     
 }
 //go to next question
 function nextQuestion(){
-    /*$('.questionWrap').on('click','.nxtbtn', function(){
-        $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
-        $('#submit').show();
-        updateQuestionNumber();
-        generateQuestion();
-    })*/
         $('.questionWrap').on('click','.nxtbtn', function(){
+            event.preventDefault();
+            console.log(STORE.length);
             if(questionNumber < STORE.length){
                 $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
                 $('#submit').show();
@@ -103,24 +98,27 @@ function nextQuestion(){
 
 //function to show results and option to retake
 function quizResults (){
-    $('.questionWrap').on('click','.nxtbtn', function(){
-        $('#colorQuestions, p.question, .nxtbtn, .feedback, .questionTracker, .scoreTracker').remove();
+    
+        $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
+        $('.questionTracker, .scoreTracker').hide();
         if (score = 5){
             $('.questionWrap').prepend('<p class="feedback">Nice job! You got a perfect score of 5 out of 5!</p>');
         } else {
             $('.questionWrap').prepend(`<p>Your score is: ${score} out of 5.</p>`);
         };
         $('.questionWrap').append('<button type="button" class="resetbtn">Retake Quiz</button>');
-    })
+    
 }
 
 //if retake is clicked, reset
 function resetQuiz (){
     $('.questionWrap').on('click','.resetbtn', function(){
         $('.resetbtn, .feedback').remove();
+        $('.questionTracker, .scoreTracker').show();
         resetNumbers();
         generateQuestion();
         $('#submit').show();
+        
         
     })
 }

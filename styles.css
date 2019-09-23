@@ -31,13 +31,13 @@ h1{
     font-size: 36px;
 }
 
-.question button{
+.questionWrap button{
     padding: 10px 16px;
     border: none;
     background-color: rgba(255, 255, 255, .7);
     font-size: 14px;
 }
-.question p{
+.questionWrap p{
     font-size: 22px;
 }
 form{
@@ -70,7 +70,7 @@ p.questionTracker{float:left;}
     font-size:14px;
 }
 
-header p, .submitScore, p.questionTracker, p.scoreTracker, #submit{display:none;}
+header p, p.questionTracker, p.scoreTracker, #submit{display:none;}
 
 .nxtbtn{
     display: block;

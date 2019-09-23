@@ -5,12 +5,13 @@ let questionNumber = 0;
 //begin quiz when user clicks start
 function start (){
     $('.startQuiz').on('click', function (event){
-        $('.question p').hide();
+        $('.questionWrap p').hide();
         $(this).hide();
         generateQuestion();
         $('p.questionTracker').show();
         $('p.scoreTracker').show();
         $('#submit').show();
+        $('.qNumber').text(questionNumber);
 
     })
 }
@@ -24,10 +25,10 @@ function generateQuestion(){
     
     //generate html and insert values of question
     
-    $('.question').prepend(
-        `<p>${question}</p><form id="colorQuestions">${userOptions}</form>`);
+    $('.questionWrap').prepend(
+        `<p class="question">${question}</p><form id="colorQuestions">${userOptions}</form>`);
     
-    $('.submitScore').show()
+    
 }
 
 //create userOptions
@@ -63,7 +64,7 @@ function submitAnswer(){
 function rightAnswer(){
     $('#submit').hide();
     $('form').after(
-        `<p>Correct!</p>
+        `<p class="feedback">Correct! Nice job!</p>
         <button type="button" class="nxtbtn">Next</button>`
     );
     updateScore();
@@ -73,16 +74,19 @@ function wrongAnswer(){
     let correctUserAnswer = STORE[questionNumber].correctAnswer;
     $('#submit').hide();
     $('form').after(
-        `<p>Incorrect!</p>
-        <p>The correct answer is: ${correctUserAnswer}</p>
+        `<p class="feedback">Sorry! That is incorrect!</p>
+        <p  class="feedback">The correct answer is: ${correctUserAnswer}</p>
         <button type="button" class="nxtbtn">Next</button>`
     );
     
 }
 //go to next question
 function nextQuestion(){
-    $('.question').on('click','.nxtbtn', function(){
-        $('.question').remove();
+    $('.questionWrap').on('click','.nxtbtn', function(){
+        $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
+        $('#submit').show();
+
+
         updateQuestionNumber();
         generateQuestion();
         

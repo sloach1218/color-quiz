@@ -1,34 +1,93 @@
 *{box-sizing: border-box; }
 body{
     text-align: center;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    margin:0;
 }
-body > section{
-    padding:20px;
+.backgroundColors{
+    background-color: blue; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom right, red,orange,yellow,green,blue,indigo,violet);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100vw;
+    height: 100vh;
+    z-index: 1;
+    position:absolute;
+   
+}
+#quizBox{
     max-width: 800px;
-    margin: 20px auto;
-    border: 1px solid #ddd;
+    background-color: rgba(255, 255, 255, .5);
+    padding: 40px 60px;
+    z-index: 5;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
-ul{padding:0;}
-ul li{
-    list-style: none;
-    border: 1px solid #ddd;
-    padding: 10px 0;
-    margin: 10px auto;
+
+h1{
+    margin:10px;
+    font-size: 36px;
 }
-button{
-    width:200px;
-    padding: 10px 8px;
+
+.question button{
+    padding: 10px 16px;
+    border: none;
+    background-color: rgba(255, 255, 255, .7);
+    font-size: 14px;
 }
+.question p{
+    font-size: 22px;
+}
+form{
+    text-align: left;
+}
+form label{
+    padding: 10px 12px;
+    display: block;
+    outline: none;
+    border: 1px solid #777;
+    margin: 10px 0;
+}
+form input{
+    vertical-align: top;
+    
+}
+
+p.questionTracker, p.scoreTracker{
+    float: right;
+    font-size: 14px;
+    
+}
+p.questionTracker{float:left;}
+#submit{
+    display: block;
+    padding: 10px 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, .7);
+    width: 100%;
+    font-size:14px;
+}
+
+header p, .submitScore, p.questionTracker, p.scoreTracker, #submit{display:none;}
+
+.nxtbtn{
+    display: block;
+    padding: 10px 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, .7);
+    width: 100%;
+    font-size:14px;
+}
+
 .correct{
     border:2px solid green;
 }
 .wrong{
     border:2px solid red;
 }
-footer p{
-    display: inline;
-    
-}
+
 footer p:first-of-type{
     color: green;
     display: block;

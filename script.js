@@ -74,7 +74,7 @@ function wrongAnswer(){
     $('#submit').hide();
     $('form').after(
         `<p class="feedback">Sorry! That is incorrect!</p>
-        <p  class="feedback">The correct answer is:<br>${correctUserAnswer}</p>
+        <p class="feedback">The correct answer is:<br>${correctUserAnswer}</p>
         <button type="button" class="nxtbtn">Next</button>`
     );
     
@@ -113,18 +113,21 @@ function quizResults (){
 function resetQuiz (){
     $('.questionWrap').on('click','.resetbtn', function(){
         $('.resetbtn, .feedback').remove();
-        $('.questionTracker, .scoreTracker').show();
         resetNumbers();
+        
+        $('.questionTracker, .scoreTracker').show();
         generateQuestion();
         $('#submit').show();
-        
-        
     })
 }
 function resetNumbers(){
     score = 0;
     questionNumber = 1;
+    $('.qNumber').text(questionNumber);
+    $('.score').text(score);
 }
+
+
 
 //update the question number by one
 //also updates the number in the view

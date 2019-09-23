@@ -26,7 +26,7 @@ const STORE = [
             'Analogous',
             'Complementary',
             'Monochromatic',
-            'Complementary'
+            'Triadic'
         ],
         correctAnswer: 'Complementary'
     },

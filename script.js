@@ -83,7 +83,6 @@ function wrongAnswer(){
 function nextQuestion(){
         $('.questionWrap').on('click','.nxtbtn', function(){
             event.preventDefault();
-            console.log(STORE.length);
             if(questionNumber < STORE.length){
                 $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
                 $('#submit').show();
@@ -98,13 +97,13 @@ function nextQuestion(){
 
 //function to show results and option to retake
 function quizResults (){
-    
         $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
         $('.questionTracker, .scoreTracker').hide();
-        if (score = 5){
+        
+        if (score === 5){
             $('.questionWrap').prepend('<p class="feedback">Nice job! You got a perfect score of 5 out of 5!</p>');
         } else {
-            $('.questionWrap').prepend(`<p>Your score is: ${score} out of 5.</p>`);
+            $('.questionWrap').prepend(`<p class="feedback">Your score is: ${score} out of 5.</p>`);
         };
         $('.questionWrap').append('<button type="button" class="resetbtn">Retake Quiz</button>');
     

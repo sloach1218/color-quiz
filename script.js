@@ -82,16 +82,51 @@ function wrongAnswer(){
 }
 //go to next question
 function nextQuestion(){
-    $('.questionWrap').on('click','.nxtbtn', function(){
+    /*$('.questionWrap').on('click','.nxtbtn', function(){
         $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
         $('#submit').show();
-
-
         updateQuestionNumber();
         generateQuestion();
-        
+    })*/
+        $('.questionWrap').on('click','.nxtbtn', function(){
+            if(questionNumber < STORE.length){
+                $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
+                $('#submit').show();
+                updateQuestionNumber();
+                generateQuestion();
+            } else {
+                quizResults();
+            }
+        })
+        } 
+
+
+//function to show results and option to retake
+function quizResults (){
+    $('.questionWrap').on('click','.nxtbtn', function(){
+        $('#colorQuestions, p.question, .nxtbtn, .feedback, .questionTracker, .scoreTracker').remove();
+        if (score = 5){
+            $('.questionWrap').prepend('<p class="feedback">Nice job! You got a perfect score of 5 out of 5!</p>');
+        } else {
+            $('.questionWrap').prepend(`<p>Your score is: ${score} out of 5.</p>`);
+        };
+        $('.questionWrap').append('<button type="button" class="resetbtn">Retake Quiz</button>');
+    })
+}
+
+//if retake is clicked, reset
+function resetQuiz (){
+    $('.questionWrap').on('click','.resetbtn', function(){
+        $('.resetbtn, .feedback').remove();
+        resetNumbers();
+        generateQuestion();
+        $('#submit').show();
         
     })
+}
+function resetNumbers(){
+    score = 0;
+    questionNumber = 1;
 }
 
 //update the question number by one
@@ -114,6 +149,7 @@ function handleQuizApp(){
     start();
     submitAnswer();
     nextQuestion();
+    resetQuiz();
 }
 
 $(handleQuizApp);

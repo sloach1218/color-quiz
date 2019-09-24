@@ -7,8 +7,7 @@ const STORE = [
             'Monochromatic Colors',
             'Complementary Colors'
         ],
-        correctAnswer: 'Primary Colors',
-        bgColor: 'linear-gradient(to bottom right, red, blue, yellow)'
+        correctAnswer: 'Primary Colors'
     },
     {
         question: 'Purple, Green and Orange are:',

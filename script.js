@@ -28,8 +28,9 @@ function generateQuestion(){
         </form>`);
     $('#colorQuestions').prepend(`<legend class="question">${question}</legend>`);
     
-    
+   
 }
+
 
 //create userOptions
 function createUserOptions(){
@@ -54,7 +55,7 @@ function submitAnswer(){
 
         let selected = $('input:checked');
         let userAnswer = selected.val();
-        console.log(userAnswer);
+        
         if(userAnswer == '' || userAnswer == undefined){
             alert('You must choose an answer!');
             return false;

@@ -13,6 +13,7 @@ body{
     height: 100vh;
     z-index: 1;
     position:absolute;
+    
    
 }
 #quizBox{
@@ -90,21 +91,6 @@ p.feedback{
     border: none;
     width: 100%;
     
-}
-
-.correct{
-    border:2px solid green;
-}
-.wrong{
-    border:2px solid red;
-}
-
-footer p:first-of-type{
-    color: green;
-    display: block;
-}
-#wrongA footer p:first-of-type{
-    color: red;
 }
 @media screen and (max-width: 800px){
     #quizBox{width: 80%;

@@ -40,8 +40,10 @@ button:hover{background-color: darkgreen;}
 .questionWrap p{
     font-size: 22px;
 }
-p.question{
-    margin-top:10px;
+legend{
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    text-align: center;
 }
 
 form{
@@ -78,7 +80,7 @@ p.questionTracker{float:left;}
     
 }
 
-header p, p.questionTracker, p.scoreTracker{display:none;}
+p.questionTracker, p.scoreTracker{display:none;}
 p.feedback{
     font-size: 16px;
 }

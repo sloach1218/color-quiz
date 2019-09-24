@@ -5,13 +5,11 @@ let questionNumber = 1;
 //begin quiz when user clicks start
 function start (){
     $('.startQuiz').on('click', function (event){
-        $('.questionWrap p, header').hide();
-        $(this).hide();
+        $('.questionWrap p:first-of-type, header').remove();
+        $('p.questionTracker, p.scoreTracker').show();
         generateQuestion();
-        $('p.questionTracker').show();
-        $('p.scoreTracker').show();
         $('.qNumber').text(questionNumber);
-        
+        $(this).remove();
     })
 }
 
@@ -24,7 +22,11 @@ function generateQuestion(){
     //generate html and insert values of question
     
     $('.questionWrap').prepend(
-        `<p class="question">${question}</p><form id="colorQuestions">${userOptions}<button type="submit" id="submit" tabindex="5" >Submit</button></form>`);
+        `<form id="colorQuestions">${userOptions}
+            
+            <button type="submit" id="submit" tabindex="5" >Submit</button>
+        </form>`);
+    $('#colorQuestions').prepend(`<legend class="question">${question}</legend>`);
     
     
 }
@@ -34,7 +36,9 @@ function createUserOptions(){
     let options = STORE[questionNumber - 1].possibleAnswers;
     let possibleOptions = '';
     for(let i = 0; i < options.length; i++){
-        possibleOptions = `<label for="option${i+1}"><input type="radio" class="options" name="options" id="option${i+1}" value="${options[i]}" tabindex="${i+1}" required />
+        possibleOptions = 
+            `<label for="option${i+1}">
+                <input type="radio" class="options" name="options" id="option${i+1}" value="${options[i]}" tabindex="${i+1}" required />
                 ${options[i]}</label>` + `${possibleOptions}`}
     return possibleOptions;
     
@@ -89,7 +93,7 @@ function nextQuestion(){
         $('.questionWrap').on('click','.nxtbtn', function(){
             event.preventDefault();
             if(questionNumber < STORE.length){
-                $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
+                $('#colorQuestions, .question, .nxtbtn, .feedback').remove();
                 
                 updateQuestionNumber();
                 generateQuestion();
@@ -102,7 +106,7 @@ function nextQuestion(){
 
 //function to show results and option to retake
 function quizResults (){
-        $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
+        $('#colorQuestions, .question, .nxtbtn, .feedback').remove();
         $('.questionTracker, .scoreTracker').hide();
         
         if (score === 5){

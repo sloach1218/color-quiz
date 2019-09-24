@@ -16,30 +16,34 @@ body{
    
 }
 #quizBox{
-    max-width: 800px;
-    background-color: rgba(255, 255, 255, .5);
+    max-width: 500px;
+    width: 60%;
+    background-color: rgba(255, 255, 255, .7);
     padding: 40px 60px;
     z-index: 5;
-    position: absolute;
+    position: fixed;
+    margin: 50px auto;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
 }
 
 h1{
     margin:10px;
     font-size: 36px;
 }
-
+button{font-size:20px;cursor: pointer;background-color: forestgreen; color:white;}
+button:hover{background-color: darkgreen;}
 .questionWrap button{
     padding: 10px 16px;
     border: none;
-    background-color: rgba(255, 255, 255, .7);
-    font-size: 16px;
 }
 .questionWrap p{
     font-size: 22px;
 }
+p.question{
+    margin-top:10px;
+}
+
 form{
     text-align: left;
 }
@@ -49,12 +53,17 @@ form label{
     outline: none;
     border: 1px solid #777;
     margin: 10px 0;
+    background-color: #fff;
+    cursor: pointer;
+    font-size:18px;
 }
 form input{
     vertical-align: top;
     
 }
-
+form label:hover{
+   background-color: #eee;
+}
 p.questionTracker, p.scoreTracker{
     float: right;
     font-size: 14px;
@@ -65,22 +74,20 @@ p.questionTracker{float:left;}
     display: block;
     padding: 10px 30px;
     border: none;
-    background-color: rgba(255, 255, 255, .7);
     width: 100%;
-    font-size:16px;
+    
 }
 
-header p, p.questionTracker, p.scoreTracker, #submit{display:none;}
+header p, p.questionTracker, p.scoreTracker{display:none;}
 p.feedback{
-    font-size: 14px;
+    font-size: 16px;
 }
 .nxtbtn{
     display: block;
     padding: 10px 30px;
     border: none;
-    background-color: rgba(255, 255, 255, .7);
     width: 100%;
-    font-size:16px;
+    
 }
 
 .correct{
@@ -96,4 +103,14 @@ footer p:first-of-type{
 }
 #wrongA footer p:first-of-type{
     color: red;
+}
+@media screen and (max-width: 800px){
+    #quizBox{width: 80%;
+    padding: 40px 40px;
+    margin: 30px auto;}
+}
+@media screen and (max-width: 450px){
+    #quizBox{width: 90%;
+    padding: 30px 20px;
+    margin: 20px auto;}
 }

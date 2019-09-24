@@ -5,12 +5,11 @@ let questionNumber = 1;
 //begin quiz when user clicks start
 function start (){
     $('.startQuiz').on('click', function (event){
-        $('.questionWrap p').hide();
+        $('.questionWrap p, header').hide();
         $(this).hide();
         generateQuestion();
         $('p.questionTracker').show();
         $('p.scoreTracker').show();
-        $('#submit').show();
         $('.qNumber').text(questionNumber);
         
     })
@@ -25,7 +24,7 @@ function generateQuestion(){
     //generate html and insert values of question
     
     $('.questionWrap').prepend(
-        `<p class="question">${question}</p><form id="colorQuestions">${userOptions}</form>`);
+        `<p class="question">${question}</p><form id="colorQuestions">${userOptions}<button type="submit" id="submit" tabindex="5" >Submit</button></form>`);
     
     
 }
@@ -35,7 +34,7 @@ function createUserOptions(){
     let options = STORE[questionNumber - 1].possibleAnswers;
     let possibleOptions = '';
     for(let i = 0; i < options.length; i++){
-        possibleOptions = `<label for="option${i+1}"><input type="radio" name="options" id="option${i+1}" value="${options[i]}" tabindex="${i+1}">
+        possibleOptions = `<label for="option${i+1}"><input type="radio" class="options" name="options" id="option${i+1}" value="${options[i]}" tabindex="${i+1}" required />
                 ${options[i]}</label>` + `${possibleOptions}`}
     return possibleOptions;
     
@@ -46,10 +45,16 @@ function createUserOptions(){
 //only allow one answer to be chosen?
 //evaluate if correct or not
 function submitAnswer(){
-    $('#submit').on('click', function (event){
+    $('.questionWrap').on('click', '#submit', function(event){
         event.preventDefault();
+
         let selected = $('input:checked');
         let userAnswer = selected.val();
+        console.log(userAnswer);
+        if(userAnswer == '' || userAnswer == undefined){
+            alert('You must choose an answer!');
+            return false;
+        }
         let correctUserAnswer = STORE[questionNumber - 1].correctAnswer;
         if (userAnswer === correctUserAnswer){
             rightAnswer();
@@ -61,7 +66,7 @@ function submitAnswer(){
 
 //if correct answer response 
 function rightAnswer(){
-    $('#submit').hide();
+    $('#submit').remove();
     $('form').after(
         `<p class="feedback">Correct! Nice job!</p>
         <button type="button" class="nxtbtn">Next</button>`
@@ -71,7 +76,7 @@ function rightAnswer(){
 //if wrong answer
 function wrongAnswer(){
     let correctUserAnswer = STORE[questionNumber - 1].correctAnswer;
-    $('#submit').hide();
+    $('#submit').remove();
     $('form').after(
         `<p class="feedback">Sorry! That is incorrect!</p>
         <p class="feedback">The correct answer is:<br>${correctUserAnswer}</p>
@@ -85,7 +90,7 @@ function nextQuestion(){
             event.preventDefault();
             if(questionNumber < STORE.length){
                 $('#colorQuestions, p.question, .nxtbtn, .feedback').remove();
-                $('#submit').show();
+                
                 updateQuestionNumber();
                 generateQuestion();
             } else {
@@ -117,7 +122,7 @@ function resetQuiz (){
         
         $('.questionTracker, .scoreTracker').show();
         generateQuestion();
-        $('#submit').show();
+        
     })
 }
 function resetNumbers(){
